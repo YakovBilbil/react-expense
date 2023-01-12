@@ -1,15 +1,16 @@
 import "./Expenses.css";
 
 import ExpenseItem from "../ExpenseItem/ExpenseItem.js";
+import Card from "../Card/Card.js";
 
-function Expenses({ items }) {
+const Expenses = ({ items }) => {
   return (
-    <div className="expenses">
+    <Card className="expenses">
       {items.map(({ id, title, amount, date }) => (
         <ExpenseItem key={id} title={title} amount={amount} date={date} />
       ))}
-    </div>
+    </Card>
   );
-}
+};
 
 export default Expenses;
