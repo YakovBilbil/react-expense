@@ -4,7 +4,7 @@ import "../NewExpense/__controls/NewExpense__controls.css";
 import "../NewExpense/__control/NewExpense__control.css";
 import "../NewExpense/__actions/NewExpense__actions.css";
 
-const ExpenseForm = ({ onSaveExpenseData }) => {
+const ExpenseForm = ({ onSaveExpenseData, onCancel }) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
@@ -24,7 +24,7 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
     event.preventDefault();
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
     onSaveExpenseData(expenseData);
@@ -73,6 +73,9 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
       </div>
 
       <div className="new-expense__actions">
+        <button type="button" onClick={onCancel}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
